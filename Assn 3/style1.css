@@ -1,0 +1,24 @@
+
+body {
+    background-color: #e9ecef;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#portal-title {
+    color: #2c3e50;
+    text-align: center;
+    font-weight: bold;
+}
+.admin-card {
+    background: #ffffff;
+    border-top: 5px solid #0d6efd;
+    border-radius: 8px;
+}
+.error-msg {
+    color: #dc3545;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}

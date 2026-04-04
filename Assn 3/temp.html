@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Admin Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="admin-card shadow-lg p-4">
+            <h2 id="portal-title">College Administration Portal</h2>
+            <p class="text-center text-secondary">Student Record Entry System</p>
+            <hr>
+            
+            <form id="adminForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Student PRN (10 Digits)</label>
+                        <input type="text" id="prn" class="form-control" placeholder="e.g. 1032233846">
+                        <span id="prnError" class="error-msg"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="studentName" class="form-control" placeholder="Enter full name">
+                        <span id="nameError" class="error-msg"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Department</label>
+                    <select id="dept" class="form-select">
+                        <option value="">-- Select Department --</option>
+                        <option value="CSE">Computer Science (CSE)</option>
+                        <option value="IT">Information Technology (IT)</option>
+                        <option value="ECE">Electronics (ECE)</option>
+                    </select>
+                    <span id="deptError" class="error-msg"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Add Student Record</button>
+            </form>
+        </div>
+
+        <div id="recordSummary" class="mt-4 p-3 border rounded bg-white" style="display:none;">
+            <h5 class="text-success">✔ Record Successfully Validated</h5>
+            <table class="table table-sm mt-2">
+                <tbody id="summaryData"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
