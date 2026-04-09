@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Manager</title>
+</head>
+<body>
+
+    <h1>📚 Book Management</h1>
+
+    <!-- Add Book -->
+    <h3>Add Book</h3>
+    <input id="title" placeholder="Title">
+    <input id="author" placeholder="Author">
+    <button onclick="addBook()">Add</button>
+
+    <!-- Book List -->
+    <h3>All Books</h3>
+    <ul id="bookList"></ul>
+
+<script>
+
+// Fetch all books
+async function getBooks() {
+    const res = await fetch('http://localhost:3000/books');
+    const data = await res.json();
+
+    const list = document.getElementById('bookList');
+    list.innerHTML = '';
+
+    data.forEach(book => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${book.title} by ${book.author}
+            <button onclick="deleteBook(${book.id})">Delete</button>
+        `;
+        list.appendChild(li);
+    });
+}
+
+// Add book
+async function addBook() {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+
+    await fetch('http://localhost:3000/books', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, author })
+    });
+
+    getBooks();
+}
+
+// Delete book
+async function deleteBook(id) {
+    await fetch(`http://localhost:3000/books/${id}`, {
+        method: 'DELETE'
+    });
+
+    getBooks();
+}
+
+// Load books on start
+getBooks();
+
+</script>
+
+</body>
+</html>
